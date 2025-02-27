@@ -104,7 +104,14 @@ map.on('load', async () => {
         .attr('stroke', 'white')    // Circle border color
         .attr('stroke-width', 1)    // Circle border thickness
         .attr('opacity', 0.8)      // Circle opacity
-        .style("--departure-ratio", d => stationFlow(d.departures / d.totalTraffic)); 
+        .style("--departure-ratio", d => stationFlow(d.departures / d.totalTraffic))
+        .each(function(d) {
+            d3.select(this).select("title").remove();
+            // Add <title> for browser tooltips
+            d3.select(this)
+              .append('title')
+              .text(`${d.totalTraffic} trips (${d.departures} departures, ${d.arrivals} arrivals)`);
+        });
     
         // Function to update circle positions when the map moves/zooms
         function updatePositions() {

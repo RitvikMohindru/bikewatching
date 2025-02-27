@@ -95,3 +95,7 @@ h1 {
 input {
     width: 500px;
 }
+
+#map svg circle {
+    pointer-events: all;
+}
