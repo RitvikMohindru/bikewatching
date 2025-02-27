@@ -101,6 +101,9 @@ map.on('load', async () => {
         .data(stations, (d) => d.short_name)  // Use station short_name as the key
         .enter()
         .append('circle')
+        .attr('stroke', 'white')    // Circle border color
+        .attr('stroke-width', 1)    // Circle border thickness
+        .attr('opacity', 0.8)      // Circle opacity
         .style("--departure-ratio", d => stationFlow(d.departures / d.totalTraffic)); 
     
         // Function to update circle positions when the map moves/zooms
